@@ -7,7 +7,7 @@ import com.xworkz.chocolate.exception.ArrayIsFullException;
 
 
 public class ChocolateDAOImplementation implements ChocolateDAO {
-	private ChocolateDTO[] dtos=new ChocolateDTO[2];
+	private ChocolateDTO[] dtos=new ChocolateDTO[9];
 	private int counter=0;
 
 	@Override
@@ -49,19 +49,102 @@ public class ChocolateDAOImplementation implements ChocolateDAO {
 	}
 
 	@Override
-	public void deleteChocolateByName(String name) {
+	public boolean deleteChocolateByName(String name) {
 		if (name == null) {
 			System.out.println("null cannot be deleted");
-			return;
+			return false;
 		}
-		//ChocolateDTO[] superArray = super.getdto();
-		//for (int i = 0; i < superArray.length; i++) {
-			//if (superArray[i] != null && superArray[i].getStadium().equals(stadium)) {
-				//superArray[i] = null;
-				//System.out.println("deleted at index" + i);
-				//return;
-			//}
+		for (int z = 0; z < this.dtos.length; z++) {
+			if (this.dtos[z] != null && this.dtos[z].getDairymilkdto().getName().equals(name))
+
+			{
+				this.dtos[z] = null;
+				System.out.println("deleted at the index " + z);
+				
+			}
+		}
+		return false;
 		
+		
+	}
+
+	@Override
+	public boolean findDuplicate(ChocolateDTO chocolateDTO) {
+		if (chocolateDTO != null) {
+			for (int i = 0; i < this.dtos.length; i++) {
+				if (this.dtos[i] != null && this.dtos[i].equals(chocolateDTO)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean findChocolateByType(String type) {
+		if (type == null) {
+			System.out.println("Do not pass null value");
+			return false;
+		}
+		for (int a = 0; a < this.dtos.length; a++) {
+			if (this.dtos[a] != null && this.dtos[a].getDairymilkdto().getType().equals(type)) {
+				System.out.println(this.dtos[a].getDairymilkdto().getName());
+				System.out.println("Found at the index " + a);
+				return true;
+			}
+		}
+		System.out.println("cannot find");
+		return false;
+	}
+
+	@Override
+	public boolean findChocolateByName(String name) {
+		if (name == null) {
+			System.out.println("Do not pass null");
+			return false;
+		}
+
+		for (int i = 0; i < this.dtos.length; i++) {
+			if (this.dtos[i] != null && this.dtos[i].getDairymilkdto().getName().equals(name)) {
+				System.out.println(this.dtos[i].getDairymilkdto().getName());
+				System.out.println("found at the index " + i);
+				return true;
+			}
+		}
+		System.out.println("cannot find");
+		return false;
+	}
+
+	@Override
+	public boolean findChocolateByPrice(int price) {
+		if (price <= 0) {
+			System.out.println("Do not pass null");
+			return false;
+		}
+
+		for (int i = 0; i < this.dtos.length; i++) {
+			if (this.dtos[i] != null && this.dtos[i].getDairymilkdto().getName().equals(dtos)) {
+				System.out.println(this.dtos[i].getDairymilkdto().getPrice());
+				System.out.println("found at the index " + i);
+				return true;
+			}
+		}
+		System.out.println("cannot find");
+		return false;
+	}
+
+	@Override
+	public boolean deleteChocolateByType(String type) {
+		for (int z = 0; z < this.dtos.length; z++) {
+			if (this.dtos[z] != null && this.dtos[z].getType().equals(type))
+
+			{
+				this.dtos[z] = null;
+				System.out.println("deleted at the index " + z);
+				
+			}
+		}
+		return false;
 		
 	}
 

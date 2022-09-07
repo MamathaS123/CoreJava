@@ -32,6 +32,11 @@ public class ChocolateRunner {
 		dao.save(dto2);
 		dao.save(dto3);
 		dao.save(dto4);
+		dao.deleteChocolateByName("aaa");
+		dao.findChocolateByPrice(9887756);
+		dao.findChocolateByName("ddd");
+		dao.findDuplicate(dto4);
+		dao.findChocolateByType("yyy");
 		
 		try {
 			value=service.validateAndSave(dto1);

@@ -33,7 +33,7 @@ private ChocolateDAO dao;
 				throw new DataIsInvalidException("flavour of chocolate is not valid");
 				
 			}
-			if(chocolateDTO.getGstno()<0) {
+			if(chocolateDTO.getGstno()<=0 && chocolateDTO.getGstno()>100000000) {
 				System.out.println(chocolateDTO.getGstno());
 				//System.out.println("gst number is not valid");
 				//return false;
@@ -44,17 +44,17 @@ private ChocolateDAO dao;
 				//return false;
 				throw new DataIsInvalidException("Dairymilk is not valid");
 			}
-			if(chocolateDTO.getDairymilkdto().getName()==null || chocolateDTO.getName().isEmpty()) {
+			if(chocolateDTO.getDairymilkdto().getName()==null || chocolateDTO.getName().isEmpty() || chocolateDTO.getName().isBlank()) {
 				//System.out.println("Dairymilk name is not valid");
 				//return false;
 				throw new DataIsInvalidException("Dairymilk name is not valid");
 			}
-			if(chocolateDTO.getDairymilkdto().getGstno()<0 || chocolateDTO.getDairymilkdto().getGstno()>10000) {
+			if(chocolateDTO.getDairymilkdto().getGstno()<0 || chocolateDTO.getDairymilkdto().getGstno()>10000){
 				//System.out.println("gstno of dairymilk is not valid");
 				//return false;
 				throw new DataIsInvalidException("gstno of dairymilk is not valid");
 			}
-			if(chocolateDTO.getDairymilkdto().getPrice()<0) {
+			if(chocolateDTO.getDairymilkdto().getPrice()<=0 && chocolateDTO.getDairymilkdto().getPrice()==0.0) {
 				//System.out.println("dairymilk price is not valid");
 				//return false;
 				throw new DataIsInvalidException("dairymilk price is not valid");
@@ -112,7 +112,35 @@ private ChocolateDAO dao;
 		return false;
 		
 		
-	}}
+	}
+
+
+	@Override
+	public boolean findDuplicate(ChocolateDTO chocolateDTO) {
+		return dao.findDuplicate(chocolateDTO);
+		
+	}
+
+
+	@Override
+	public boolean deleteChocolateByName(String name) {
+		return dao.deleteChocolateByName(name);
+	}
+
+
+	@Override
+	public boolean findChocolateByName(String name) {
+		return dao.findChocolateByName(name);
+		
+	}
+
+
+	@Override
+	public boolean findChocolateByPrice(int price) {
+		return dao.findChocolateByPrice(price);
+	}
+	
+}
 			
 			
 			
