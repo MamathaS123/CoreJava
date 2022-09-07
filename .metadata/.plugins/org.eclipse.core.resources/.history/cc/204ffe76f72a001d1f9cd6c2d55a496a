@@ -1,0 +1,19 @@
+package com.xworkz.pharmacy.service;
+
+import com.xworkz.pharmacy.dto.PharmacyDTO;
+
+public class PharmacyServiceImpl implements PharmacyService{
+
+	@Override
+	public boolean validateAndSave(PharmacyDTO pharmacydto) {
+		if(pharmacydto!=null) {
+			
+		}
+		else {
+			System.out.println("pharmacy null cannot validate");
+			return false;
+		}
+		return false;
+	}
+
+}

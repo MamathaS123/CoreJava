@@ -1,0 +1,18 @@
+package com.xworkz.array;
+
+public class stringArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String cities[]= {"Rajajinagar","Basaveswarnagar","Vijaynagar","Malleshwaram"};
+		String city="Basaveswarnagatr";
+		for(int i=0;i<4;i++) {
+			if(cities[i]==city) {
+				System.out.println("city is present in array");
+			}
+			
+		}
+		
+	}
+
+}

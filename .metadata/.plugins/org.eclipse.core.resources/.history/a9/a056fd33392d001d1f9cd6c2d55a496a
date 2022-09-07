@@ -1,0 +1,107 @@
+package com.xworkz.pharmacy.service;
+
+import com.xworkz.pharmacy.dao.PharmacyDAO;
+import com.xworkz.pharmacy.dto.PharmacyDTO;
+import com.xworkz.pharmacy.exception.DataIsInvalidException;
+
+public class PharmacyServiceImpl implements PharmacyService{
+	private PharmacyDAO dao;
+	
+
+	public PharmacyServiceImpl(PharmacyDAO dao) {
+		System.out.println("Generated -" .getClass().getSimpleName());
+		this.dao = dao;
+	}
+
+
+	@Override
+	public boolean validateAndSave(PharmacyDTO pharmacydto) throws DataIsInvalidException {
+		if(pharmacydto!=null) {
+			if(pharmacydto.getName()==null || pharmacydto.getName().isEmpty() || pharmacydto.getName().length()<3)
+			{
+				System.out.println(pharmacydto.getName());
+				//System.out.println("name is null cannot validate");
+				//return false;
+				throw new DataIsInvalidException("name of pharmacy is not valid");
+			}
+			if(pharmacydto.getLocation()==null || !pharmacydto.getLocation().isEmpty() || pharmacydto.getLocation().length()<5) {
+				System.out.println(pharmacydto.getLocation());
+				//System.out.println("location is not valid");
+				//return false;
+				throw new DataIsInvalidException("location of pharmacy is not valid");
+				
+			}
+			if(pharmacydto.getGstNo()<0) {
+				System.out.println(pharmacydto.getGstNo());
+				//System.out.println("gst number is not valid");
+				//return false;
+				throw new DataIsInvalidException("gstno of pharmacy is not valid");
+			}
+			if(pharmacydto.getMedicineDTO()==null) {
+				//System.out.println("medicine is null");
+				//return false;
+				throw new DataIsInvalidException("medicine is not valid");
+			}
+			if(pharmacydto.getMedicineDTO().getName()==null || !pharmacydto.getName().isEmpty()) {
+				//System.out.println("medicine name is not valid");
+				//return false;
+				throw new DataIsInvalidException("medicine name is not valid");
+			}
+			if(pharmacydto.getMedicineDTO().getDosage()<0 || pharmacydto.getMedicineDTO().getDosage()>1000) {
+				//System.out.println("dosage is not valid");
+				//return false;
+				throw new DataIsInvalidException("medicine dosage is not valid");
+			}
+			if(pharmacydto.getMedicineDTO().getPrice()<0 || pharmacydto.getMedicineDTO().getPrice()>1000) {
+				//System.out.println("price is not valid");
+				//return false;
+				throw new DataIsInvalidException("medicine price is not valid");
+			}
+			if(pharmacydto.getMedicineDTO().getExpDate()==null || pharmacydto.getMedicineDTO().getExpDate().isEmpty()) {
+				//System.out.println("exp date is not valid");
+				//return false;
+				throw new DataIsInvalidException("medicine exp date is not valid");
+			}
+			else {
+				System.out.println("pharmactdto is valid and can be saved");
+				dao.save(pharmacydto);
+				return true;
+			}
+		}
+		else {
+			System.out.println("pharmacy null cannot validate");
+			return false;
+		}
+		
+	}
+
+
+	@Override
+	public boolean validateAndUpdate(String name, PharmacyDTO pharmacydto) throws DataIsInvalidException {
+		if(pharmacydto!=null) {
+			if(pharmacydto.getName()==null || pharmacydto.getName().isEmpty() || pharmacydto.getName().length()<3) {
+				System.out.println(pharmacydto.getName());
+				throw new DataIsInvalidException("?Name pf pharmacy is not valid");
+			}
+			if(pharmacydto.getLocation()==null || pharmacydto.getLocation().isEmpty() || pharmacydto.getLocation().length()<3) {
+				System.out.println(pharmacydto.getLocation());
+				throw new DataIsInvalidException("?location pharmacy is not valid");
+			
+		}
+			if(pharmacydto.getGstNo()<0){
+				System.out.println(pharmacydto.getGstNo());
+				throw new DataIsInvalidException("gst number of pharmacy is not valid");
+			}
+			if(pharmacydto.getMedicineDTO()==null) {
+				System.out.println("medicine is null");
+			}
+			if(pharmacydto.getMedicineDTO().getName()==null || pharmacydto.getMedicineDTO().getName().isEmpty()) {
+				throw new DataIsInvalidException("medicine name of pharmacy is not valid");
+			}
+		return false;
+	
+		}
+	}
+}
+
+

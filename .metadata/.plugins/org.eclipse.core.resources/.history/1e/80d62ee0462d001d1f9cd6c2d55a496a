@@ -1,0 +1,33 @@
+package com.xworkz.chocolate.service;
+
+import com.xworkz.chocolate.dao.ChocolateDAO;
+import com.xworkz.chocolate.dto.ChocolateDTO;
+import com.xworkz.chocolate.exception.DataIsInvalidException;
+
+
+public class ChocolateServiceImplementation implements ChocolateService{
+	
+private ChocolateDAO dao;
+	
+
+	public ChocolateServiceImplementation(ChocolateDAO dao) {
+		System.out.println("Generated -" .getClass().getSimpleName());
+		this.dao = dao;
+	}
+
+
+	@Override
+	public boolean validateAndSave(ChocolateDTO chocolateDTO) {
+		if(chocolateDTO!=null) {
+			if(chocolateDTO.getName()==null || chocolateDTO.getName().isEmpty() || chocolateDTO.getName().length()<3)
+			{
+				System.out.println(chocolateDTO.getName());
+				//System.out.println("name is null cannot validate");
+				//return false;
+				throw new DataIsInvalidException("name of chocolate is not valid");
+			}
+		return false;
+	}
+
+
+}

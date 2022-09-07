@@ -1,0 +1,5 @@
+package com.xworkz.pharmacy.dto;
+
+public class MedicineDTO {
+
+}

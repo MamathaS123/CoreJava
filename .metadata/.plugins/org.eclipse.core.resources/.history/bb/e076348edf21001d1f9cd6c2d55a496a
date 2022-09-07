@@ -1,0 +1,86 @@
+package com.xworkz.cricket.DTO;
+
+public class CricketDTO {
+	
+	private int id;
+	private String name;
+	private String captain;
+	private int teamsize;
+	private String country;
+	private String stadium;
+	private String sponsor;
+	
+	public CricketDTO() {
+		System.out.println("default no arg constructor");
+	}
+
+	public CricketDTO(int id, String name, String captain, int teamsize, String country, String stadium,
+			String sponsor) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.captain = captain;
+		this.teamsize = teamsize;
+		this.country = country;
+		this.stadium = stadium;
+		this.sponsor = sponsor;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCaptain() {
+		return captain;
+	}
+
+	public void setCaptain(String captain) {
+		this.captain = captain;
+	}
+
+	public int getTeamsize() {
+		return teamsize;
+	}
+
+	public void setTeamsize(int teamsize) {
+		this.teamsize = teamsize;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getStadium() {
+		return stadium;
+	}
+
+	public void setStadium(String stadium) {
+		this.stadium = stadium;
+	}
+
+	public String getSponsor() {
+		return sponsor;
+	}
+
+	public void setSponsor(String sponsor) {
+		this.sponsor = sponsor;
+	}
+	
+		
+}

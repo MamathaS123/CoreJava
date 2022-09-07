@@ -1,0 +1,50 @@
+package com.xworkz.chocolate.dao;
+
+import com.xworkz.chocolate.dto.ChocolateDTO;
+import com.xworkz.chocolate.exception.ArrayIsFullException;
+
+
+
+public class ChocolateDAOImplementation implements ChocolateDAO {
+	private ChocolateDTO[] dtos=new ChocolateDTO[2];
+	private int counter=0;
+
+	@Override
+	public boolean save(ChocolateDTO chocolateDTO) {
+		if(chocolateDTO==null) {
+			System.out.println("Object is null cannot be saved");
+		return false;
+		}
+		if(this.counter<this.dtos.length) {
+			this.dtos[counter]=chocolateDTO;
+			System.out.println("the chocolate is stored at index "+this.counter);
+			this.counter++;
+			return true;
+		}
+		else {
+			System.out.println("chocolate cannot be stored as array is full");
+			throw new ArrayIsFullException("Array is full change ur code");
+		}
+	
+	}
+
+	@Override
+	public boolean updateByName(String name, ChocolateDTO chocolateDTO) {
+		if(chocolateDTO==null && name==null) {
+			System.out.println("object is null cannot be saved");
+			return false;
+		}
+		for(int index=0;index<dtos.length;index++) {
+			if(dtos[index]!=null && dtos[index].getName().equals(name)) {
+				this.dtos[index]=chocolateDTO;
+				return true;
+			}
+			else {
+				System.out.println("name is not found");
+				return false;
+			}
+		}
+		return false;
+	}
+
+}

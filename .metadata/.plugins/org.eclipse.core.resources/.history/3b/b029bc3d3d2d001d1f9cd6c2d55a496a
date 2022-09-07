@@ -1,0 +1,5 @@
+package com.xworkz.chocolate.exception;
+
+public class ArrayIsFullException {
+
+}

@@ -1,0 +1,14 @@
+package com.xworkz.pharmacy.service;
+
+import com.xworkz.pharmacy.dto.PharmacyDTO;
+
+public interface PharmacyService {
+	public abstract boolean validateAndSave(PharmacyDTO pharmacydto);
+
+	@Override
+	boolean equals(Object obj);
+
+	@Override
+	String toString();
+
+}

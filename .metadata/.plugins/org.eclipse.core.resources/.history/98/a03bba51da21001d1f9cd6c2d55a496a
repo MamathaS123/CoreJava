@@ -1,0 +1,5 @@
+package com.xworkz.cricket.DAO;
+
+public class CricketDAOimplementation extends CricketDAO{
+
+}

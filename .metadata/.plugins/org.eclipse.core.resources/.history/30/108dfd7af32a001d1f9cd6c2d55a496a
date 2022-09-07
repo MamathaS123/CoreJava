@@ -1,0 +1,24 @@
+package com.xworkz.pharmacy.dao;
+
+import com.xworkz.pharmacy.dto.PharmacyDTO;
+
+public class pharmacyDAOImpl implements PharmacyDAO {
+	
+	private PharmacyDTO[] dtos=new PharmacyDTO[5];
+	private int counter=0;
+
+	@Override
+	public boolean save(PharmacyDTO pharmacydto) {
+		
+		if(pharmacydto==null) {
+			System.out.println("Object is null cannot be saved");
+			return null;
+		}
+		if(this.dtos.length<this.counter) {
+			this.dtos[counter]=pharmacydto;
+		}
+		
+		return false;
+	}
+
+}

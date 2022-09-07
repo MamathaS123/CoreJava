@@ -1,0 +1,14 @@
+package com.xworkz.cricket.DAO;
+
+import com.xworkz.cricket.DTO.CricketDTO;
+
+public class CricketDAOimplementation extends CricketDAO{
+
+	public CricketDAOimplementation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}

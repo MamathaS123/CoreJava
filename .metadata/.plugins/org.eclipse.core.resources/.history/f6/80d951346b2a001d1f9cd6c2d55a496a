@@ -1,0 +1,7 @@
+package com.xworkz.pharmacy.dao;
+
+public interface PharmacyDAO {
+	
+	public abstract void save();
+
+}

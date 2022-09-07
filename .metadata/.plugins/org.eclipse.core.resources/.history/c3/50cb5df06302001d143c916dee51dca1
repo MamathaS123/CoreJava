@@ -1,0 +1,33 @@
+package com.xworkz.oops;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*Fan fan = new Fan();
+		System.out.println("Before initialize");
+		System.out.println(fan.brand);
+		System.out.println(fan.inputpower);
+		
+		fan.color="blue";
+		fan.brand="bajaj";
+		fan.inputpower=3.2;
+		
+		System.out.println("After initialize");
+		System.out.println(fan.brand);
+		System.out.println(fan.inputpower);*/
+		
+		System.out.println("**********************************************************");
+		
+		SunGlass sg = new SunGlass();
+		sg.brand="Rayban";
+		sg.color="blue";
+		sg.price=5000;
+		System.out.println(sg.brand);
+		System.out.println(sg.color);
+		System.out.println(sg.price);
+		
+
+	}
+
+}

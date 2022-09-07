@@ -1,0 +1,5 @@
+package com.xworkz.chocolate.dao;
+
+public interface ChocolateDAO {
+
+}

@@ -1,0 +1,110 @@
+package com.xworkz.cricket.DAO;
+
+import com.xworkz.cricket.DTO.CricketDTO;
+
+public abstract class CricketDAO {
+	private CricketDTO[] dto = new CricketDTO[5];
+	private int counter = 0;
+	public CricketDTO[] getDto() {
+		return dto;
+	}
+	public int getCounter() {
+		return counter;
+	}
+	
+	public boolean save(CricketDTO dtos) {
+		if(dtos == null) {
+			System.out.println("dto is null and cannot be saved");
+			return false;
+		}
+		boolean isFound = findDuplicate(dtos);
+		if (isFound) {
+			System.out.println("dto is duplicate cannot be saved");
+			return false;
+		}
+		
+		if (this.counter < this.dto.length) {
+			this.dto[this.counter] = dtos;
+			System.out.println("successfully saved dto at index" + this.counter);
+			this.counter++;
+			return true;
+		}
+		System.out.println("Array is full cannot save");
+		return false;
+	}
+	public boolean findDuplicate(CricketDTO dtos) {
+		if (dtos == null) {
+			System.out.println("do not pass null dto");
+			return false;
+		}
+		for (int z=0; z <this.dto.length; z++) {
+			if (this.dto[z] != null && dtos.equals(this.dto[z])) {
+				System.out.println("duplicate found in array");
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean findTeamByCountryName(String country) {
+		if (country == null) {
+			System.out.println("contry name cannot be null");
+			return false;
+		}
+		for (int x=0; x<this.dto.length; x++) {
+			if(this.dto[x] != null && country.equals(this.dto[x].getCountry())) {
+				System.out.println("country name is found at index" + x);
+				return true;
+						
+			}
+		}
+		System.out.println("country not found");
+		return false;
+	}
+	
+	public boolean findTeamByCountryNameAndCaptainName(String country, String captain) {
+		if(country == null && captain == null) {
+			System.out.println("country name and captain name cannot be null");
+			return true;
+		}
+		for (int z=0; z<this.dto.length; z++) {
+			if (this.dto[z] != null && this.dto[z].getCountry().equals(country) && this.dto[z].getCaptain().equals(captain)) {
+				System.out.println("team found at index" + z);
+				return true;
+			}
+		}
+		System.out.println("country and captain not found");
+		return false;
+	}
+	
+	public boolean findTeamByCountryCaptainAndSponsor(String country, String captain, String sponsor) {
+		if (country == null && captain == null && sponsor == null) {
+			System.out.println("country, catain asnd sponsor cannot be null");
+			return false;
+		}
+		for (int z=0; z<this.dto.length; z++) {
+			if (this.dto[z].getCountry().equals(country) && this.dto[z].getCaptain().equals(captain) && this.dto[z].getSponsor().equals(sponsor)) {
+				System.out.println("team found at index" + z);
+				return true;
+			}
+		}
+		System.out.println("country, captain sponsor not found");
+		return false;
+	}
+	
+	public void findNumberOfTeams() {
+		int count = 0;
+		
+		for (int r=0; r<this.dto.length; r++) {
+			if (this.dto[r] != null) {
+				count++;
+			}
+		}
+		System.out.println("number of teams" + count);
+	}
+	
+	public abstract boolean updateTeamByCaptain(String captain, CricketDTO dto);
+	public abstract boolean deleteTeamByStadium(String stadium);
+	
+
+}

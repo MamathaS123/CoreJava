@@ -1,0 +1,39 @@
+package com.xworkz.serialization;
+import java.io.*;
+
+public class Tester1 implements Serializable   {
+	public static void main(String[] args) {
+		A a1=new A();
+		B b1=new B();
+		System.out.println("Serialization started");
+		try {
+		FileOutputStream fos=new FileOutputStream("abc.ser");
+		ObjectOutputStream oos=new ObjectOutputStream(fos);
+		oos.writeObject(a1);
+		oos.writeObject(b1);
+		System.out.println("Serialization ended");
+		}
+		catch(IOException ex)
+	    {
+	        System.out.println("IOException is caught");
+	    }
+		
+		System.out.println("Deserialization started");
+		
+		try {
+		FileInputStream fis=new FileInputStream("abc.ser");
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		A a2=(A)ois.readObject();
+		B b2=(B)ois.readObject();
+		System.out.println("Deserialization ended");
+		}
+		catch(IOException ex)
+	    {
+	        System.out.println("IOException is caught");
+	    }
+		
+		System.out.println(a2.i+"................"+a2.j);
+		System.out.println(b2.i+"................"+b2.j);
+	}
+
+}

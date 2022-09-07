@@ -1,0 +1,10 @@
+package com.xworkz.oops.inheritence;
+
+public class Employee {
+	
+	String name = "AAA";
+	int salary = 1000;
+	int empid = 123;
+
+
+}

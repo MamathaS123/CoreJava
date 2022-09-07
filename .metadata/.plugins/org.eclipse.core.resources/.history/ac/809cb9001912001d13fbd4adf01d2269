@@ -1,0 +1,20 @@
+package com.xworkz.oops.polymorphism;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		PhonePe phonePe = new PhonePe();
+		phonePe.recharge("gfgfjhhkjh");
+		
+		Shapes shapes = new Shapes();
+		shapes.Area(3.2);
+		
+		Amazon amazonpay = new Amazon();
+		amazonpay.payment(3450);
+		
+		TeamMeeting tm = new TeamMeeting();
+		tm.invite(456, "ABC","fghj");
+
+	}
+
+}

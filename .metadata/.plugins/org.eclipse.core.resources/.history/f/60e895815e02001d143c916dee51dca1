@@ -1,0 +1,16 @@
+package com.xworkz.oops;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Fan fan = new Fan();
+		System.out.println("Before initialize");
+		System.out.println(fan.brand);
+		System.out.println(fan.inputpower);
+		fan.color="blue";
+		
+
+	}
+
+}

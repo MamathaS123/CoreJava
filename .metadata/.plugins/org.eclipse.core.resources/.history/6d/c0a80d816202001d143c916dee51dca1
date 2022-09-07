@@ -1,0 +1,33 @@
+package com.xworkz.oops;
+
+public class EmployeeTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee E1 = new Employee();
+		E1.empId=1;
+		E1.name="AAA";
+		E1.designation="Software Engineer";
+		//E1.state="Karnataka";
+		
+		System.out.println(E1.empId);
+		System.out.println(E1.name);
+		System.out.println(E1.designation);
+		System.out.println(E1.state);
+		
+		System.out.println("***************************");
+		
+		Employee E2 = new Employee();
+		E2.empId=2;
+		E2.name="BBB";
+		E2.designation="Test Engineer";
+		//E2.state="Delhi";
+		
+		System.out.println(E2.empId);
+		System.out.println(E2.name);
+		System.out.println(E2.designation);
+		System.out.println(E2.state);
+
+	}
+
+}

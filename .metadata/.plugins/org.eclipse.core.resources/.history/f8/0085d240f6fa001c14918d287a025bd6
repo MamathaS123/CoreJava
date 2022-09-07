@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package com.xworkz.array;
+
+/**
+ * @author Mamatha S
+ *
+ */
+public class age {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

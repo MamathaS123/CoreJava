@@ -1,0 +1,16 @@
+package com.xworkz.chocolate.service;
+
+import com.xworkz.chocolate.dao.ChocolateDAO;
+
+public class ChocolateServiceImplementation implements ChocolateService{
+	
+private ChocolateDAO dao;
+	
+
+	public ChocolateServiceImplementation(ChocolateDAO dao) {
+		System.out.println("Generated -" .getClass().getSimpleName());
+		this.dao = dao;
+	}
+
+
+}

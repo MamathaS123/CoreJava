@@ -1,0 +1,125 @@
+package com.xworkz.chocolate.service;
+
+import com.xworkz.chocolate.dao.ChocolateDAO;
+import com.xworkz.chocolate.dto.ChocolateDTO;
+import com.xworkz.chocolate.exception.DataIsInvalidException;
+
+
+public class ChocolateServiceImplementation implements ChocolateService{
+	
+private ChocolateDAO dao;
+	
+
+	public ChocolateServiceImplementation(ChocolateDAO dao) {
+		System.out.println("Generated -" .getClass().getSimpleName());
+		this.dao = dao;
+	}
+
+
+	@Override
+	public boolean validateAndSave(ChocolateDTO chocolateDTO) throws DataIsInvalidException {
+		if(chocolateDTO!=null) {
+			if(chocolateDTO.getName()==null || chocolateDTO.getName().isEmpty() || chocolateDTO.getName().length()<1)
+			{
+				System.out.println(chocolateDTO.getName());
+				//System.out.println("name is null cannot validate");
+				//return false;
+				throw new DataIsInvalidException("name of chocolate is not valid");
+			}
+			if(chocolateDTO.getFlavour()==null || chocolateDTO.getFlavour().isEmpty() || chocolateDTO.getFlavour().isBlank()) {
+				System.out.println(chocolateDTO.getFlavour());
+				//System.out.println("flavour is not valid");
+				//return false;
+				throw new DataIsInvalidException("flavour of chocolate is not valid");
+				
+			}
+			if(chocolateDTO.getGstno()<0) {
+				System.out.println(chocolateDTO.getGstno());
+				//System.out.println("gst number is not valid");
+				//return false;
+				throw new DataIsInvalidException("gstno of chocolate is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto()==null) {
+				//System.out.println("Dairymilk is null");
+				//return false;
+				throw new DataIsInvalidException("Dairymilk is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto().getName()==null || chocolateDTO.getName().isEmpty()) {
+				//System.out.println("Dairymilk name is not valid");
+				//return false;
+				throw new DataIsInvalidException("Dairymilk name is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto().getGstno()<0 || chocolateDTO.getDairymilkdto().getGstno()>10000) {
+				//System.out.println("gstno of dairymilk is not valid");
+				//return false;
+				throw new DataIsInvalidException("gstno of dairymilk is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto().getPrice()<0) {
+				//System.out.println("dairymilk price is not valid");
+				//return false;
+				throw new DataIsInvalidException("dairymilk price is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto().getKitkatdto().getName()==null) {
+				//System.out.println("kitkat name is not valid");
+				//return false;
+				throw new DataIsInvalidException("kitkat name is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto().getKitkatdto().getGstno()<0) {
+				//System.out.println("kitkat gstno is not valid");
+				//return false;
+				throw new DataIsInvalidException("kitkat gstno is not valid");
+				
+			}
+			if(chocolateDTO.getDairymilkdto().getKitkatdto().getPrice()<0) {
+				//System.out.println("kitkat price is not valid");
+				//return false;
+				throw new DataIsInvalidException("kitkat price is not valid");
+			}
+			if(chocolateDTO.getDairymilkdto().getKitkatdto().getType()==null) {
+				//System.out.println("kitkat type is not valid");
+				//return false;
+				throw new DataIsInvalidException("kitkat type is not valid");
+			}
+			else {
+				System.out.println("chocolate is valid and can be saved");
+				dao.save(chocolateDTO);
+				return true;
+			}
+		}
+		else {
+			System.out.println("chocolate null cannot validate");
+			return false;
+		}
+		
+	}
+
+
+
+	@Override
+	public boolean validateAndUpdate(String name, ChocolateDTO chocolateDTO) throws DataIsInvalidException {
+		if(chocolateDTO!=null) {
+			if(chocolateDTO.getName()==null || chocolateDTO.getName().isEmpty() || chocolateDTO.getName().length()<3) {
+				System.out.println(chocolateDTO.getName());
+				throw new DataIsInvalidException("?Name pf Chocolate is not valid");
+			}
+			if(chocolateDTO.getFlavour()==null || chocolateDTO.getFlavour().isEmpty()) {
+				System.out.println(chocolateDTO.getFlavour());
+				throw new DataIsInvalidException("?flavoyr of chocolate is not valid");
+		
+	}
+			return false;
+		}
+		return false;
+		
+		
+	}}
+			
+			
+			
+			
+			
+	
+	
+
+
+

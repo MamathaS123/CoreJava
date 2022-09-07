@@ -1,0 +1,35 @@
+package com.xworkz.cricket.DAO;
+
+import com.xworkz.cricket.DTO.CricketDTO;
+
+public class CricketDAOimplementation extends CricketDAO{
+	
+	public CricketDTO superDTO[]=super.getDto();
+	public int index=super.getCounter();
+	@Override
+	public boolean updateTeamByCaptain(String captain, CricketDTO dto) {
+		if(captain==null) {
+			System.out.println("captain cannot be null");
+			return false;
+		}
+		for(int i=0; i<this.superDTO.length; i++) {
+			if(this.superDTO != null && this.superDTO[i].getCaptain().equals(captain)) {
+				CricketDTO updatedDto = null;
+				this.superDTO[i]=updatedDto;
+				System.out.println("updated dto");
+				return true;
+			}
+		}
+		return false;
+	}
+	@Override
+	public boolean deleteTeamByStadium(String stadium) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
+	
+
+}
